@@ -1,0 +1,74 @@
+import image1 from "../assets/image_01.jpg";
+import image2 from "../assets/image_02.jpg";
+import image3 from "../assets/image_03.jpg";
+import background from "../assets/who_background.png";
+import LearnMoreButton from "./learnmorBtn";
+
+export default function WhoWeAre() {
+    return (
+        <div className="w-full rounded-b-[80px] -mt-20 pt-28 px-10 relative"
+            style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${background})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+            }}>
+            <div className="w-full grid md:grid-cols-4 gap-8 text-white py-10">
+                <div className="text-start text-gray-300">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, maxime impedit praesentium quasi voluptate aliquam quia cupiditate eveniet quae dolores sed laborum iste dolore totam accusamus excepturi cumque ex libero. voluptate aliquam quia cupiditate eveniet quae dolores sed laborum iste dolore totam accusamus excepturi.
+                </div>
+                <div>
+                    <h1 className="text-6xl font-bold text-start ps-20 leading-20">
+                        Who <br />
+                        <span className="bg-gradient-to-br from-white to-[#adc1c4] bg-clip-text text-transparent">
+                            We <br /> Are
+                        </span>
+                    </h1>
+                </div>
+                <div className="text-start text-gray-300">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quas nemo sed culpa fugit? Neque doloribus repellendus unde, quidem et nisi nam velit quasi possimus, maxime iure distinctio placeat odit. voluptate aliquam quia cupiditate eveniet.
+                </div>
+                <div className="flex justify-end items-end">
+                    <LearnMoreButton data={"LEARN MORE"} color={"white"} />
+                </div>
+            </div>
+            <div className="w-full grid md:grid-cols-4 gap-5 h-[500px]">
+                <div></div>
+                <div className="h-3/4 relative overflow-hidden rounded-4xl">
+                    <div className="absolute inset-0 grayscale-50 hover:grayscale-0 transition duration-500">
+                        <img 
+                            src={image1} 
+                            alt="plan image" 
+                            className="h-full w-full object-cover"
+                        />
+                    </div>
+                </div>
+                <div className="h-2/3 relative overflow-hidden rounded-4xl">
+                    <div className="absolute inset-0 grayscale-50 hover:grayscale-0 transition duration-500">
+                        <img 
+                            src={image2} 
+                            alt="work image" 
+                            className="h-full w-full object-cover"
+                        />
+                    </div>
+                </div>
+                <div className="h-5/6 flex flex-col">
+                    <div className="flex-1 relative overflow-hidden rounded-4xl">
+                        <div className="absolute inset-0 grayscale-50 hover:grayscale-0 transition duration-500">
+                            <img 
+                                src={image3} 
+                                alt="office image" 
+                                className="h-full w-full object-cover"
+                            />
+                        </div>
+                    </div>
+                    <div className="flex justify-end text-white pt-5">
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-right"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
