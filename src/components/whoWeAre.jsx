@@ -6,7 +6,7 @@ import LearnMoreButton from "./learnmorBtn";
 
 export default function WhoWeAre() {
     return (
-        <div className="w-full md:rounded-b-[80px] rounded-b-[40px] md:-mt-20 -mt-10 md:pt-28 pt-14 md:px-10 px-5 relative"
+        <div className="w-full md:rounded-b-[80px] rounded-b-[40px] md:-mt-20 -mt-10 md:pt-28 pt-14 md:px-10 px-4 relative"
             style={{
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${background})`,
                 backgroundSize: "cover",
@@ -32,8 +32,10 @@ export default function WhoWeAre() {
                     <LearnMoreButton data={"LEARN MORE"} color={"white"} />
                 </div>
             </div>
-            <div className="w-full grid md:grid-cols-4 gap-5 h-[500px]">
-                <div className="md:block hidden"></div>
+            
+            {/* Desktop View */}
+            <div className="w-full hidden md:grid md:grid-cols-4 gap-5 h-[500px]">
+                <div></div>
                 <div className="h-3/4 relative overflow-hidden rounded-4xl">
                     <div className="absolute inset-0 grayscale-50 hover:grayscale-0 transition duration-500">
                         <img 
@@ -67,6 +69,44 @@ export default function WhoWeAre() {
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-right"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg>
                         </button>
                     </div>
+                </div>
+            </div>
+
+            {/* Mobile View with Horizontal Scroll */}
+            <div className="md:hidden w-full overflow-x-auto scrollbar-hide">
+                <div className="flex gap-4 pb-8 min-w-max">
+                    <div className="w-[300px] h-[400px] relative overflow-hidden rounded-4xl flex-shrink-0">
+                        <div className="absolute inset-0 grayscale-50 hover:grayscale-0 transition duration-500">
+                            <img 
+                                src={image1} 
+                                alt="plan image" 
+                                className="h-full w-full object-cover"
+                            />
+                        </div>
+                    </div>
+                    <div className="w-[300px] h-[400px] relative overflow-hidden rounded-4xl flex-shrink-0">
+                        <div className="absolute inset-0 grayscale-50 hover:grayscale-0 transition duration-500">
+                            <img 
+                                src={image2} 
+                                alt="work image" 
+                                className="h-full w-full object-cover"
+                            />
+                        </div>
+                    </div>
+                    <div className="w-[300px] h-[400px] relative overflow-hidden rounded-4xl flex-shrink-0">
+                        <div className="absolute inset-0 grayscale-50 hover:grayscale-0 transition duration-500">
+                            <img 
+                                src={image3} 
+                                alt="office image" 
+                                className="h-full w-full object-cover"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div className="flex justify-end text-white pt-5 pb-8">
+                    {/* <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-right"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M13 18l6 -6" /><path d="M13 6l6 6" /></svg>
+                    </button> */}
                 </div>
             </div>
         </div>

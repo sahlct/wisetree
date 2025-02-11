@@ -48,12 +48,12 @@ export default function Footer() {
 
                 {/* option links */}
                 <div className="flex md:gap-5 gap-3 mt-8 md:mt-0">
-                    <a href="#" className="hover:text-gray-400 transition text-xs">About</a>
-                    <a href="#" className="hover:text-gray-400 transition text-xs">Service</a>
-                    <a href="#" className="hover:text-gray-400 transition text-xs">Blog</a>
-                    <a href="#" className="hover:text-gray-400 transition text-xs">Case Study</a>
-                    <a href="#" className="hover:text-gray-400 transition text-xs">Work</a>
-                    <a href="#" className="hover:text-gray-400 transition text-xs">Career</a>
+                    <a href="#" className="hover:text-gray-400 transition md:text-sm text-xs">About</a>
+                    <a href="#" className="hover:text-gray-400 transition md:text-sm text-xs">Service</a>
+                    <a href="#" className="hover:text-gray-400 transition md:text-sm text-xs">Blog</a>
+                    <a href="#" className="hover:text-gray-400 transition md:text-sm text-xs">Case Study</a>
+                    <a href="#" className="hover:text-gray-400 transition md:text-sm text-xs">Work</a>
+                    <a href="#" className="hover:text-gray-400 transition md:text-sm text-xs">Career</a>
                 </div>
 
                 {/* copyright text */}

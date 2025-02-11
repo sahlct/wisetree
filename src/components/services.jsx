@@ -56,10 +56,10 @@ export default function Services() {
         }}
         className="md:h-44 h-28 flex items-center md:px-10 px-5"
       >
-        <h1 className="md:text-9xl text-5xl text-start">Services</h1>
+        <h1 className="md:text-9xl text-6xl text-start">Services</h1>
       </div>
-      <h2 className="md:text-7xl text-3xl md:py-10 py-5 md:px-10 px-5 md:pb-16 pb-10 font-semibold text-start text-blue-900">
-        Empowering B2B Leaders To <br />
+      <h2 className="md:text-7xl text-4xl md:pe-52 pe-10 md:py-10 py-5 md:px-10 px-4 md:pb-16 pb-10 font-semibold text-start text-blue-900">
+        Empowering B2B Leaders To
         <span className="bg-gradient-to-r from-[#104386] to-[#86a0bf] bg-clip-text text-transparent">
           Scale Organically
         </span>
