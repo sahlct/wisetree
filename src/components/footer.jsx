@@ -6,18 +6,18 @@ import LearnMoreButton from "./learnmorBtn";
 export default function Footer() {
     return (
         <div
-            className="w-full -mt-20 pt-40 flex flex-col bg-cover bg-center bg-no-repeat relative"
+            className="w-full md:-mt-20 -mt-10 md:pt-40 pt-10  flex flex-col bg-cover bg-center bg-no-repeat relative"
             style={{ backgroundImage: `url(${background})` }}
         >
             {/* overlay  */}
             <div className="absolute inset-0 bg-black opacity-50"></div>
 
             <div
-                className="w-full flex flex-col md:flex-row justify-between items-center px-10 py-10 relative z-10"
+                className="w-full flex flex-col md:flex-row justify-between items-center md:px-10 px-5 py-10 relative z-10"
                 style={{ backgroundImage: `url(${dot})` }}
             >
-                <div className="capitalize text-gray-300 text-4xl md:text-5xl text-center md:text-start">
-                    Achieve your business goals today. <br />Book a discovery call now!
+                <div className="capitalize text-gray-300 text-2xl md:text-5xl text-center md:text-start md:pe-32 pe-0">
+                    Achieve your business goals today. Book a discovery call now!
                 </div>
                 <div className="mt-5 md:mt-0">
                     <LearnMoreButton data="LEARN MORE" />
@@ -29,7 +29,7 @@ export default function Footer() {
                 <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-[250px] md:w-[350px] opacity-20">
                     <img src={logo} alt="Wisetree Logo" />
                 </div>
-                <h1 className="font-bold text-[100px] md:text-[200px] text-center bg-gradient-to-r from-[#92CC7E] via-[#1675A7] to-[#1881B8] text-transparent bg-clip-text">
+                <h1 className="font-bold text-[70px] md:text-[200px] text-center bg-gradient-to-r from-[#92CC7E] via-[#1675A7] to-[#1881B8] text-transparent bg-clip-text">
                     Wisetree
                 </h1>
             </div>
@@ -47,13 +47,13 @@ export default function Footer() {
                 </div>
 
                 {/* option links */}
-                <div className="flex gap-5 mt-4 md:mt-0">
-                    <a href="#" className="hover:text-gray-400 transition">About</a>
-                    <a href="#" className="hover:text-gray-400 transition">Service</a>
-                    <a href="#" className="hover:text-gray-400 transition">Blog</a>
-                    <a href="#" className="hover:text-gray-400 transition">Case Study</a>
-                    <a href="#" className="hover:text-gray-400 transition">Work</a>
-                    <a href="#" className="hover:text-gray-400 transition">Career</a>
+                <div className="flex md:gap-5 gap-3 mt-8 md:mt-0">
+                    <a href="#" className="hover:text-gray-400 transition text-xs">About</a>
+                    <a href="#" className="hover:text-gray-400 transition text-xs">Service</a>
+                    <a href="#" className="hover:text-gray-400 transition text-xs">Blog</a>
+                    <a href="#" className="hover:text-gray-400 transition text-xs">Case Study</a>
+                    <a href="#" className="hover:text-gray-400 transition text-xs">Work</a>
+                    <a href="#" className="hover:text-gray-400 transition text-xs">Career</a>
                 </div>
 
                 {/* copyright text */}

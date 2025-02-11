@@ -10,9 +10,9 @@ export default function LearnMoreButton({ data }) {
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
             }}
-            className="ps-7 pe-3.5 w-56 py-3 text-white font-semibold flex items-center justify-between rounded-lg cursor-pointer"
+            className="md:ps-7 ps-5 md:pe-3.5 pe-1.5 md:w-56 w-44 py-3 text-white font-semibold flex items-center justify-between rounded-lg cursor-pointer"
         >
-            <h1>{data}</h1>
+            <h1 className="text-sm md:text-normal">{data}</h1>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"

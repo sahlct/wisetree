@@ -6,7 +6,7 @@ import LearnMoreButton from "./learnmorBtn";
 
 export default function WhoWeAre() {
     return (
-        <div className="w-full rounded-b-[80px] -mt-20 pt-28 px-10 relative"
+        <div className="w-full md:rounded-b-[80px] rounded-b-[40px] md:-mt-20 -mt-10 md:pt-28 pt-14 md:px-10 px-5 relative"
             style={{
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${background})`,
                 backgroundSize: "cover",
@@ -18,7 +18,7 @@ export default function WhoWeAre() {
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, maxime impedit praesentium quasi voluptate aliquam quia cupiditate eveniet quae dolores sed laborum iste dolore totam accusamus excepturi cumque ex libero. voluptate aliquam quia cupiditate eveniet quae dolores sed laborum iste dolore totam accusamus excepturi.
                 </div>
                 <div>
-                    <h1 className="text-6xl font-bold text-start ps-20 leading-20">
+                    <h1 className="text-6xl font-bold text-start md:ps-20 ps-5 md:leading-20">
                         Who <br />
                         <span className="bg-gradient-to-br from-white to-[#adc1c4] bg-clip-text text-transparent">
                             We <br /> Are
@@ -33,7 +33,7 @@ export default function WhoWeAre() {
                 </div>
             </div>
             <div className="w-full grid md:grid-cols-4 gap-5 h-[500px]">
-                <div></div>
+                <div className="md:block hidden"></div>
                 <div className="h-3/4 relative overflow-hidden rounded-4xl">
                     <div className="absolute inset-0 grayscale-50 hover:grayscale-0 transition duration-500">
                         <img 

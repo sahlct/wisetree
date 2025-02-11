@@ -4,10 +4,10 @@ import logo from "../assets/logo_only.png";
 
 const AnimatedButton = () => {
     return (
-        <button className="group cursor-pointer w-32 h-14 bg-white rounded-full relative overflow-hidden transition-all duration-300 hover:w-44">
+        <button className="group cursor-pointer md:w-32 w-28 md:h-14 h-10 bg-white rounded-full relative overflow-hidden transition-all duration-300 hover:w-44">
             {/* Initial State - Circular Icon */}
-            <div className="absolute top-2 left-[35%] flex items-center justify-center transition-opacity duration-300 group-hover:opacity-0">
-                <div className="w-10 h-10 relative">
+            <div className="absolute md:top-2 top-1 left-[35%] flex items-center justify-center transition-opacity duration-300 group-hover:opacity-0">
+                <div className="md:w-10 md:h-10 h-8 w-8 relative">
                     <span className="absolute inset-0">
                         <img src={logo} alt="logo" className="" />
                     </span>

@@ -66,3 +66,10 @@
     var(--_g) 0 calc(var(--_d) + var(--y));
   mask-repeat: no-repeat;
 }
+
+@media screen and (max-width: 400px) {
+  .home-radius{
+    --x: 80px; 
+    --y: 0px;
+  }
+}

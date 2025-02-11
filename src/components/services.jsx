@@ -54,17 +54,17 @@ export default function Services() {
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
         }}
-        className="h-44 flex items-center px-10"
+        className="md:h-44 h-28 flex items-center md:px-10 px-5"
       >
-        <h1 className="text-9xl text-start">Services</h1>
+        <h1 className="md:text-9xl text-5xl text-start">Services</h1>
       </div>
-      <h2 className="text-7xl py-10 px-10 pb-16 font-semibold text-start text-blue-900">
+      <h2 className="md:text-7xl text-3xl md:py-10 py-5 md:px-10 px-5 md:pb-16 pb-10 font-semibold text-start text-blue-900">
         Empowering B2B Leaders To <br />
         <span className="bg-gradient-to-r from-[#104386] to-[#86a0bf] bg-clip-text text-transparent">
           Scale Organically
         </span>
       </h2>
-      <div className="grid md:grid-cols-4 gap-5 px-10">
+      <div className="grid md:grid-cols-4 gap-5 md:px-10 px-5">
         <ServiceCard mainBg={card1} circleBg={card2} number="01." position="top" />
         <ServiceCard mainBg={card2} circleBg={card3} number="02." position="bottom" />
         <ServiceCard mainBg={card4} circleBg={card1} number="03." position="top" />

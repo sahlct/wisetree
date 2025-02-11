@@ -4,13 +4,13 @@ import LearnMoreButton from "./learnmorBtn";
 
 export default function WhatMakesSection() {
     return (
-        <div className="pt-10 pb-28 w-full px-10 bg-white rounded-b-[80px] z-30 relative">
-            <h2 className="text-xl font-light my-3 text-start">WHAT MAKES US UNIQUE</h2>
+        <div className="md:pt-10 pt-5 md:pb-28 pb-14 w-full md:px-10 px-5 bg-white md:rounded-b-[80px] rounded-b-[40px] z-30 relative">
+            <h2 className="md:text-xl text-lg font-light my-3 text-start">WHAT MAKES US UNIQUE</h2>
             <hr />
-            <h1 className="text-7xl text-[#174685] text-start mt-10 tracking-wider font-semibold">Redefining Success For <br /><span className="bg-gradient-to-r from-[#174685] to-[#86a0bf] bg-clip-text text-transparent">
+            <h1 className="md:text-7xl text-4xl text-[#174685] text-start md:mt-10 mt-5 tracking-wider font-semibold">Redefining Success For <br /><span className="bg-gradient-to-r from-[#174685] to-[#86a0bf] bg-clip-text text-transparent">
                 B2B Brands
             </span></h1>
-            <div className="grid md:grid-cols-3 gap-8 text-start mt-16">
+            <div className="grid md:grid-cols-3 gap-8 text-start md:mt-16 mt-8">
                 <div className="flex justify-start items-end">
                     <LearnMoreButton data={"LEARN MORE"}/>
                 </div>
