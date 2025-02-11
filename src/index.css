@@ -67,9 +67,15 @@
   mask-repeat: no-repeat;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 300px) {
   .home-radius{
     --x: 80px; 
+    --y: 0px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .home-radius{
+    --x: 70px; 
     --y: 0px;
   }
 }
