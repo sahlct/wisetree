@@ -67,7 +67,7 @@
   mask-repeat: no-repeat;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 640px) {
   .home-radius {
     --r: 0px;
     --s: 0px;

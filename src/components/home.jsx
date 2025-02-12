@@ -1,4 +1,5 @@
-// import React from 'react';
+import { useEffect } from "react";
+import { gsap } from "gsap";
 import background from "../assets/home_background.jpg";
 import blueRing from "../assets/ring_blue.png";
 import yellowRing from "../assets/ring_yellow.png";
@@ -6,16 +7,23 @@ import homeLogo from "../assets/logo_only.png";
 import AnimatedButton from "./animateBtn";
 
 export default function Home() {
+    useEffect(() => {
+        // GSAP animation for the text with a smaller range
+        gsap.fromTo(
+            ".heading-left",
+            { x: -150, opacity: 0 },
+            { x: 0, opacity: 1, duration: 2, ease: "power2.out" }
+        );
+
+        gsap.fromTo(
+            ".heading-right",
+            { x: 150, opacity: 0 },
+            { x: 0, opacity: 1, duration: 2, ease: "power2.out", delay: 0.2 }
+        );
+    }, []);
+
     return (
         <div className="relative md:px-10 px-4 md:pt-10 pt-4">
-            {/* Desktop-only rings */}
-            <div className="absolute z-10 md:top-40 hidden md:block left-36 md:w-96">
-                <img src={blueRing} alt="blue_ring" />
-            </div>
-            <div className="absolute z-10 md:w-96 hidden md:block md:right-64 md:top-24">
-                <img src={yellowRing} alt="yellow_ring" />
-            </div>
-
             {/* Logo section - responsive */}
             <div className="absolute bg-white md:w-52 md:h-20 h-12 flex justify-start ps-2 gap-2 items-center">
                 <img src={homeLogo} alt="logo" className="md:w-16 w-10" />
@@ -50,14 +58,26 @@ export default function Home() {
                 <div className="md:pt-52 pt-72">
                     {/* Desktop heading */}
                     <div className="hidden md:block">
-                        <h1 className="text-white text-8xl font-bold text-end tracking-wide z-20 relative">DON&apos;T JUST KEEP UP</h1>
-                        <h1 className="z-20 relative text-white text-8xl font-bold text-start tracking-widest -ms-3">UP, OUTRUN</h1>
+                        <h1 className="text-white text-8xl font-bold text-end tracking-wide z-20 relative heading-left">
+                            DON&apos;T JUST KEEP UP
+                        </h1>
+                        <h1 className="z-20 relative text-white text-8xl font-bold text-start tracking-widest -ms-3 heading-right">
+                            UP, OUTRUN
+                        </h1>
                     </div>
-
-                    {/* Mobile heading */}
+                    <div className="absolute z-10 md:top-40 hidden md:block left-36 md:w-96">
+                        <img src={blueRing} alt="blue_ring" />
+                    </div>
+                    <div className="absolute z-10 md:w-96 hidden md:block md:right-64 md:top-24">
+                        <img src={yellowRing} alt="yellow_ring" />
+                    </div>
                     <div className="md:hidden">
-                        <h1 className="text-white text-3xl font-bold text-center tracking-wide z-20 relative">DON&apos;T JUST KEEP UP</h1>
-                        <h1 className="text-white text-3xl font-bold text-center tracking-wide z-20 relative mt-2">UP, OUTRUN</h1>
+                        <h1 className="text-white heading-left text-3xl font-bold text-center tracking-wide z-20 relative">
+                            DON&apos;T JUST KEEP UP
+                        </h1>
+                        <h1 className="text-white heading-right text-3xl font-bold text-center tracking-wide z-20 relative mt-2">
+                            UP, OUTRUN
+                        </h1>
                     </div>
 
                     {/* Description text - responsive */}

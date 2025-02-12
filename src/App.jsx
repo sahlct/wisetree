@@ -1,5 +1,5 @@
 import './App.css'
-// import Carousel from './components/carousel'
+import Carousel from './components/carousel'
 import Footer from './components/footer'
 import Home from './components/home'
 import Services from './components/services'
@@ -14,7 +14,7 @@ function App() {
       <Home />
       <WhatMakesSection />
       <WhoWeAre />
-      {/* <Carousel /> */}
+      <Carousel />
       <Services />
       <ThoughtFlow />
       <Footer />

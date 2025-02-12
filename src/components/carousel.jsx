@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import card1 from "../assets/card_1.jpg";
 import card2 from "../assets/card_2.jpg";
@@ -18,6 +18,13 @@ const carouselDatas = [
       left: '15%',
       top: '27%',
       borderRadius: '50px',
+    },
+    mobileStyles: {
+      height: '180px',
+      width: '280px',
+      left: '5%',
+      top: '20%',
+      borderRadius: '30px',
     }
   },
   {
@@ -32,6 +39,13 @@ const carouselDatas = [
       right: '15%',
       top: '45%',
       borderRadius: '30px',
+    },
+    mobileStyles: {
+      height: '140px',
+      width: '200px',
+      right: '5%',
+      top: '47%',
+      borderRadius: '20px',
     }
   },
   {
@@ -46,6 +60,13 @@ const carouselDatas = [
       right: '35%',
       top: '80%',
       borderRadius: '25px',
+    },
+    mobileStyles: {
+      height: '90px',
+      width: '140px',
+      right: '35%',
+      top: '68%',
+      borderRadius: '15px',
     }
   },
   {
@@ -60,26 +81,46 @@ const carouselDatas = [
       right: '55%',
       top: '87%',
       borderRadius: '25px',
+    },
+    mobileStyles: {
+      height: '60px',
+      width: '100px',
+      right: '55%',
+      top: '85%',
+      borderRadius: '15px',
     }
   },
 ];
 
 export default function Carousel() {
-  const [order, setOrder] = useState([0, 1, 2, 3]); // Keep track of current order
+  const [order, setOrder] = useState([0, 1, 2, 3]);
   const [isAnimating, setIsAnimating] = useState(false);
   const cardRefs = useRef([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const rotateItems = (clickedIndex) => {
     if (isAnimating) return;
     setIsAnimating(true);
 
-    // Calculate new order based on clicked item
-    // const clickedPosition = order.indexOf(clickedIndex);
+    const currentPosition = order.indexOf(clickedIndex);
     const newOrder = [...order];
     
-    // Rotate array until clicked item is at position 0
-    while (newOrder.indexOf(clickedIndex) !== 0) {
-      newOrder.unshift(newOrder.pop());
+    // Calculate how many positions to move forward
+    const positionsToMove = currentPosition === 0 ? 3 : currentPosition - 1;
+    
+    // Rotate array by the calculated positions
+    for (let i = 0; i < positionsToMove; i++) {
+      newOrder.push(newOrder.shift());
     }
 
     const timeline = gsap.timeline({
@@ -91,9 +132,10 @@ export default function Carousel() {
 
     // Animate each card to its new position
     cardRefs.current.forEach((ref, currentIndex) => {
-      // const currentPosition = order.indexOf(currentIndex);
       const newPosition = newOrder.indexOf(currentIndex);
-      const targetStyles = carouselDatas[newPosition].styles;
+      const targetStyles = isMobile 
+        ? carouselDatas[newPosition].mobileStyles 
+        : carouselDatas[newPosition].styles;
 
       timeline.to(ref, {
         ...targetStyles,
@@ -105,12 +147,15 @@ export default function Carousel() {
 
   return (
     <div className="min-h-screen py-10 relative">
-      <h1 className="text-7xl font-medium">
-        if you&apos;re looking at us,<br /> you&apos;re looking to
+      <h1 className={`${isMobile ? 'text-3xl' : 'md:text-7xl sm:text-5xl md:px-52 sm:px-32'} font-medium`}>
+        if you&apos;re looking at us, you&apos;re looking to
       </h1>
 
       {carouselDatas.map((item, index) => {
         const currentPosition = order.indexOf(index);
+        const currentStyles = isMobile 
+          ? carouselDatas[currentPosition].mobileStyles 
+          : carouselDatas[currentPosition].styles;
         
         return (
           <div
@@ -119,7 +164,7 @@ export default function Carousel() {
             className="absolute flex justify-center items-center cursor-pointer"
             onClick={() => rotateItems(index)}
             style={{
-              ...carouselDatas[currentPosition].styles,
+              ...currentStyles,
               background: `url(${item.image})`,
               backgroundPosition: 'center',
               backgroundSize: 'cover',
@@ -130,17 +175,19 @@ export default function Carousel() {
             <div className={`flex text-white ${
               currentPosition === 0 ? 'gap-10' : 
               currentPosition === 1 ? 'gap-5' : 
-              currentPosition === 2 ? 'gap-5' : 'gap-3'
-            }`}>
+              currentPosition === 2 ? 'gap-3' : 'gap-2'
+            } ${isMobile ? 'scale-75' : ''}`}>
               <div className={`relative flex justify-center items-center ${
-                currentPosition === 0 ? 'text-7xl' : 
-                currentPosition === 1 ? 'text-6xl' : 
-                currentPosition === 2 ? 'text-3xl' : 'text-3xl'
+                currentPosition === 0 ? `${isMobile ? 'text-5xl' : 'text-7xl'}` : 
+                currentPosition === 1 ? `${isMobile ? 'text-4xl' : 'text-6xl'}` : 
+                currentPosition === 2 ? `${isMobile ? 'text-2xl' : 'text-3xl'}` : 
+                `${isMobile ? 'text-xl' : 'text-3xl'}`
               } font-bold`}>
                 <div className={`absolute text-[#ffffff22] ${
-                  currentPosition === 0 ? 'text-9xl' : 
-                  currentPosition === 1 ? 'text-8xl' : 
-                  currentPosition === 2 ? 'text-5xl' : 'text-5xl'
+                  currentPosition === 0 ? `${isMobile ? 'text-7xl' : 'text-9xl'}` : 
+                  currentPosition === 1 ? `${isMobile ? 'text-6xl' : 'text-8xl'}` : 
+                  currentPosition === 2 ? `${isMobile ? 'text-4xl' : 'text-5xl'}` : 
+                  `${isMobile ? 'text-3xl' : 'text-5xl'}`
                 }`}>
                   {item.letter}
                 </div>
@@ -148,16 +195,18 @@ export default function Carousel() {
               </div>
               <div className="text-start flex flex-col">
                 <div className={`${
-                  currentPosition === 0 ? 'text-5xl' : 
-                  currentPosition === 1 ? 'text-xl' : 
-                  currentPosition === 2 ? 'text-md' : 'text-sm'
+                  currentPosition === 0 ? `${isMobile ? 'text-3xl' : 'text-5xl'}` : 
+                  currentPosition === 1 ? `${isMobile ? 'text-lg' : 'text-xl'}` : 
+                  currentPosition === 2 ? `${isMobile ? 'text-sm' : 'text-md'}` : 
+                  `${isMobile ? 'text-xs' : 'text-sm'}`
                 } font-semibold`}>
                   {item.header}
                 </div>
                 <div className={`${
-                  currentPosition === 0 ? 'text-2xl' : 
-                  currentPosition === 1 ? 'text-md' : 
-                  currentPosition === 2 ? 'text-xs' : 'text-[8px]'
+                  currentPosition === 0 ? `${isMobile ? 'text-xl' : 'text-2xl'}` : 
+                  currentPosition === 1 ? `${isMobile ? 'text-sm' : 'text-md'}` : 
+                  currentPosition === 2 ? `${isMobile ? 'text-[10px]' : 'text-xs'}` : 
+                  `${isMobile ? 'text-[8px]' : 'text-[8px]'}`
                 }`}>
                   {item.text}
                 </div>
