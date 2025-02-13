@@ -36,7 +36,7 @@ export default function Footer() {
 
             <hr className="border-white mx-10 opacity-50" />
 
-            <div className="flex flex-col md:flex-row justify-between items-center py-5 px-10 text-white text-sm md:text-base relative z-10">
+            <div className="flex flex-col md:flex-row justify-between items-center py-5 md:px-10 px-4 text-white text-sm md:text-base relative z-10">
 
                 {/* icons */}
                 <div className="flex gap-4">

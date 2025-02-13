@@ -20,7 +20,7 @@ export default function WhatMakesSection() {
                 scrollTrigger: {
                     trigger: '.text-animation-container',
                     start: 'top 100%', 
-                    end: 'top 50%',
+                    end: 'top 30%',
                     scrub: true, 
                 },
             }
