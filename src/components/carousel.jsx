@@ -57,7 +57,7 @@ const carouselDatas = [
     styles: {
       height: '110px',
       width: '180px',
-      right: '35%',
+      right: '50%',
       top: '80%',
       borderRadius: '25px',
     },
@@ -78,14 +78,14 @@ const carouselDatas = [
     styles: {
       height: '80px',
       width: '130px',
-      right: '55%',
+      right: '74%',
       top: '87%',
       borderRadius: '25px',
     },
     mobileStyles: {
       height: '60px',
       width: '100px',
-      right: '55%',
+      right: '65%',
       top: '85%',
       borderRadius: '15px',
     }
@@ -112,16 +112,10 @@ export default function Carousel() {
     if (isAnimating) return;
     setIsAnimating(true);
 
-    const currentPosition = order.indexOf(clickedIndex);
     const newOrder = [...order];
-    
-    // Calculate how many positions to move forward
-    const positionsToMove = currentPosition === 0 ? 3 : currentPosition - 1;
-    
-    // Rotate array by the calculated positions
-    for (let i = 0; i < positionsToMove; i++) {
-      newOrder.push(newOrder.shift());
-    }
+    console.log(clickedIndex)
+    newOrder.push(newOrder.shift());
+    console.log(newOrder)
 
     const timeline = gsap.timeline({
       onComplete: () => {

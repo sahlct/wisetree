@@ -1,10 +1,14 @@
-// import React from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import dotGrid from "../assets/dot_grid.png";
 import card1 from "../assets/card_1.jpg";
 import card2 from "../assets/card_2.jpg";
 import card3 from "../assets/card_3.jpg";
 import card4 from "../assets/card_4.jpg";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const ServiceCard = ({ mainBg, circleBg, number, position, header, headerBig, icon }) => (
   <div className="relative">
@@ -83,7 +87,46 @@ export default function Services() {
       svg: (<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-react"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M6.306 8.711c-2.602 .723 -4.306 1.926 -4.306 3.289c0 2.21 4.477 4 10 4c.773 0 1.526 -.035 2.248 -.102" /><path d="M17.692 15.289c2.603 -.722 4.308 -1.926 4.308 -3.289c0 -2.21 -4.477 -4 -10 -4c-.773 0 -1.526 .035 -2.25 .102" /><path d="M6.305 15.287c-.676 2.615 -.485 4.693 .695 5.373c1.913 1.105 5.703 -1.877 8.464 -6.66c.387 -.67 .733 -1.339 1.036 -2" /><path d="M17.694 8.716c.677 -2.616 .487 -4.696 -.694 -5.376c-1.913 -1.105 -5.703 1.877 -8.464 6.66c-.387 .67 -.733 1.34 -1.037 2" /><path d="M12 5.424c-1.925 -1.892 -3.82 -2.766 -5 -2.084c-1.913 1.104 -1.226 5.877 1.536 10.66c.386 .67 .793 1.304 1.212 1.896" /><path d="M12 18.574c1.926 1.893 3.821 2.768 5 2.086c1.913 -1.104 1.226 -5.877 -1.536 -10.66c-.375 -.65 -.78 -1.283 -1.212 -1.897" /><path d="M11.5 12.866a1 1 0 1 0 1 -1.732a1 1 0 0 0 -1 1.732z" /></svg>)
     }
   ];
-  
+
+  useEffect(() => {
+    const mm = gsap.matchMedia();
+
+    mm.add("(max-width: 767px)", () => {
+      // Mobile animations
+      gsap.utils.toArray(".service-card").forEach((card, index) => {
+        const direction = index % 2 === 0 ? -100 : 100; // Odd cards left, even cards right
+        gsap.from(card, {
+          x: direction,
+          opacity: 0,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            end: "top 20%",
+            scrub: 1,
+          },
+        });
+      });
+    });
+
+    mm.add("(min-width: 768px)", () => {
+      // Desktop animations
+      gsap.utils.toArray(".service-card").forEach((card) => {
+        gsap.from(card, {
+          y: 100,
+          opacity: 0,
+          scrollTrigger: {
+            trigger: card,
+            start: "top 100%",
+            end: "top 70%",
+            scrub: 1,
+          },
+        });
+      });
+    });
+
+    return () => mm.revert(); // Cleanup
+  }, []);
+
   return (
     <div>
       <div
@@ -104,16 +147,17 @@ export default function Services() {
       </h2>
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 gap-5 md:px-10 px-5">
         {cards.map((card, index) => (
-          <ServiceCard
-            key={card.count}
-            mainBg={card.main_bg}
-            circleBg={card.circle_bg}
-            number={card.count}
-            position={index % 2 === 0 ? "top" : "bottom"}
-            header={card.header}
-            headerBig={card.header_big}
-            icon={card.svg}
-          />
+          <div key={card.count} className="service-card">
+            <ServiceCard
+              mainBg={card.main_bg}
+              circleBg={card.circle_bg}
+              number={card.count}
+              position={index % 2 === 0 ? "top" : "bottom"}
+              header={card.header}
+              headerBig={card.header_big}
+              icon={card.svg}
+            />
+          </div>
         ))}
       </div>
     </div>
