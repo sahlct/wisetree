@@ -121,7 +121,7 @@ export default function WhoWeAre() {
                 </div>
             </div>
 
-            {/* Mobile View with Horizontal Scroll */}
+            {/* Mobile View with Scroll concept */}
             <div className="md:hidden w-full overflow-x-auto scrollbar-hide">
                 <div className="flex gap-4 pb-8 min-w-max animate-from-bottom">
                     <div className="w-[300px] h-[400px] relative overflow-hidden rounded-4xl flex-shrink-0">

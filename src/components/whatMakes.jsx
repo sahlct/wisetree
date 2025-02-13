@@ -39,7 +39,7 @@ export default function WhatMakesSection() {
         <div className="md:pt-10 pt-4 md:pb-28 pb-14 w-full md:px-10 px-4 bg-white md:rounded-b-[80px] rounded-b-[40px] z-30 relative">
             <h2 className="md:text-xl text-lg font-light my-3 text-start">WHAT MAKES US UNIQUE</h2>
             <hr />
-            <h1 className="md:text-7xl md:pe-52 pe-14 text-5xl text-[#174685] text-start md:mt-10 mt-5 tracking-wider font-semibold text-animation-container">
+            <h1 className="md:text-7xl md:pe-52 pe-10 text-5xl text-[#174685] text-start md:mt-10 mt-5 tracking-wider font-semibold text-animation-container">
                 <span className="block">{wrapLetters('Redefining Success For')}</span>
                 <span className="block bg-gradient-to-r from-[#174685] to-[#86a0bf] bg-clip-text text-transparent">
                     {wrapLetters('B2B Brands')}

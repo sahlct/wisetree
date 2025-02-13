@@ -86,7 +86,7 @@ const carouselDatas = [
       height: '60px',
       width: '100px',
       right: '65%',
-      top: '85%',
+      top: '82%',
       borderRadius: '15px',
     }
   },

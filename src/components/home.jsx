@@ -7,8 +7,8 @@ import homeLogo from "../assets/logo_only.png";
 import AnimatedButton from "./animateBtn";
 
 export default function Home() {
+    // gsap animation 
     useEffect(() => {
-        // GSAP animation for the text with a smaller range
         gsap.fromTo(
             ".heading-left",
             { x: -150, opacity: 0 },
@@ -41,7 +41,6 @@ export default function Home() {
                 style={{ backgroundImage: `url(${background})`, backgroundSize: "cover", backgroundPosition: "center" }}
                 className="home-radius w-full relative md:rounded-[80px] rounded-[40px] flex flex-col justify-between md:py-2 py-1 md:min-h-screen"
             >
-                {/* Mobile-only rings */}
                 <div className="md:hidden absolute z-10 top-36 left-4 w-48">
                     <img src={blueRing} alt="blue_ring" />
                 </div>
@@ -49,14 +48,13 @@ export default function Home() {
                     <img src={yellowRing} alt="yellow_ring" />
                 </div>
 
-                {/* Let's Talk Button - responsive positioning */}
+                {/* Let's Talk Button*/}
                 <div className="md:w-44 w-32 h-32 md:h-44 bg-gradient-to-br from-[#0b3152] to-[#66a08e] rounded-full text-white md:text-4xl text-2xl flex justify-center items-center md:px-6 px-4 md:leading-12 leading-6 font-semibold absolute md:left-[52%] left-1/2 transform -translate-x-1/2 md:top-[42%] top-[15%] z-30">
                     Let&apos;s Talk
                 </div>
 
                 {/* Main content section - responsive */}
                 <div className="md:pt-52 pt-72">
-                    {/* Desktop heading */}
                     <div className="hidden md:block">
                         <h1 className="text-white text-8xl font-bold text-end tracking-wide z-20 relative heading-left">
                             DON&apos;T JUST KEEP UP
@@ -80,7 +78,7 @@ export default function Home() {
                         </h1>
                     </div>
 
-                    {/* Description text - responsive */}
+                    {/* Description text */}
                     <div className="w-full flex justify-end">
                         <div className="text-white md:w-[350px] w-full text-center md:text-start md:mt-0 mt-28 md:pe-16 text-base px-5 md:px-0">
                             <span className="md:hidden font-semibold block mb-4">

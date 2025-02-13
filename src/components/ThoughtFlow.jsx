@@ -16,7 +16,7 @@ export default function ThoughtFlow() {
 
     gsap.fromTo(
       leftImageRef.current,
-      { x: -100, opacity: 0 }, // Start position (off-screen left)
+      { x: -100, opacity: 0 }, 
       {
         x: 0,
         opacity: 1,
@@ -24,15 +24,15 @@ export default function ThoughtFlow() {
         ease: "linear",
         scrollTrigger: {
           trigger: leftImageRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reset", // Restart animation on re-entry
+          start: "top 100%",
+          toggleActions: "play none none reset", 
         },
       }
     );
 
     gsap.fromTo(
       rightImageRef.current,
-      { x: 100, opacity: 0 }, // Start position (off-screen right)
+      { x: 100, opacity: 0 }, 
       {
         x: 0,
         opacity: 1,
@@ -40,8 +40,8 @@ export default function ThoughtFlow() {
         ease: "linear",
         scrollTrigger: {
           trigger: rightImageRef.current,
-          start: "top 80%",
-          toggleActions: "play none none reset", // Restart animation on re-entry
+          start: "top 100%",
+          toggleActions: "play none none reset", 
         },
       }
     );

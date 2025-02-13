@@ -100,8 +100,8 @@ export default function Services() {
           opacity: 0,
           scrollTrigger: {
             trigger: card,
-            start: "top 80%",
-            end: "top 20%",
+            start: "top 100%",
+            end: "top 50%",
             scrub: 1,
           },
         });
@@ -128,7 +128,7 @@ export default function Services() {
   }, []);
 
   return (
-    <div style={{ overflow: 'hidden' }}> {/* Add overflow hidden here */}
+    <div style={{ overflow: 'hidden' }}>
       <div
         style={{
           background: `url(${dotGrid})`,
