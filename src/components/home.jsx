@@ -23,7 +23,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="relative md:px-10 px-4 md:pt-10 pt-4">
+        <div className="relative md:px-10 px-4 md:pt-10 pt-4 overflow-hidden">
             {/* Logo section - responsive */}
             <div className="absolute bg-white md:w-52 md:h-20 h-12 flex justify-start ps-2 gap-2 items-center">
                 <img src={homeLogo} alt="logo" className="md:w-16 w-10" />
