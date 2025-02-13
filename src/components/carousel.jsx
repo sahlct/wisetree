@@ -111,24 +111,23 @@ export default function Carousel() {
   const rotateItems = (clickedIndex) => {
     if (isAnimating) return;
     setIsAnimating(true);
+    console.log(clickedIndex)
 
     const newOrder = [...order];
-    console.log(clickedIndex)
     newOrder.push(newOrder.shift());
-    console.log(newOrder)
 
     const timeline = gsap.timeline({
       onComplete: () => {
         setOrder(newOrder);
-        setIsAnimating(false);
+        setTimeout(() => setIsAnimating(false), 300); // Allow text animation to finish
       }
     });
 
-    // Animate each card to its new position
+    // Animate each card's movement first
     cardRefs.current.forEach((ref, currentIndex) => {
       const newPosition = newOrder.indexOf(currentIndex);
-      const targetStyles = isMobile 
-        ? carouselDatas[newPosition].mobileStyles 
+      const targetStyles = isMobile
+        ? carouselDatas[newPosition].mobileStyles
         : carouselDatas[newPosition].styles;
 
       timeline.to(ref, {
@@ -137,7 +136,15 @@ export default function Carousel() {
         ease: "power2.inOut",
       }, 0);
     });
+
+    // Delay text size change after 0.3s
+    setTimeout(() => {
+      document.querySelectorAll('.text-transition').forEach(el => {
+        el.classList.add('transition-all', 'duration-500', 'ease-in-out');
+      });
+    }, 300);
   };
+
 
   return (
     <div className="min-h-screen py-10 relative">
@@ -147,15 +154,15 @@ export default function Carousel() {
 
       {carouselDatas.map((item, index) => {
         const currentPosition = order.indexOf(index);
-        const currentStyles = isMobile 
-          ? carouselDatas[currentPosition].mobileStyles 
+        const currentStyles = isMobile
+          ? carouselDatas[currentPosition].mobileStyles
           : carouselDatas[currentPosition].styles;
-        
+
         return (
           <div
             key={item.count}
             ref={el => cardRefs.current[index] = el}
-            className="absolute flex justify-center items-center cursor-pointer"
+            className="absolute flex overflow-hidden justify-center items-center cursor-pointer"
             onClick={() => rotateItems(index)}
             style={{
               ...currentStyles,
@@ -166,42 +173,37 @@ export default function Carousel() {
               zIndex: 4 - currentPosition
             }}
           >
-            <div className={`flex text-white ${
-              currentPosition === 0 ? 'gap-10' : 
-              currentPosition === 1 ? 'gap-5' : 
-              currentPosition === 2 ? 'gap-3' : 'gap-2'
-            } ${isMobile ? 'scale-75' : ''}`}>
-              <div className={`relative flex justify-center items-center ${
-                currentPosition === 0 ? `${isMobile ? 'text-5xl' : 'text-7xl'}` : 
-                currentPosition === 1 ? `${isMobile ? 'text-4xl' : 'text-6xl'}` : 
-                currentPosition === 2 ? `${isMobile ? 'text-2xl' : 'text-3xl'}` : 
-                `${isMobile ? 'text-xl' : 'text-3xl'}`
-              } font-bold`}>
-                <div className={`absolute text-[#ffffff22] ${
-                  currentPosition === 0 ? `${isMobile ? 'text-7xl' : 'text-9xl'}` : 
-                  currentPosition === 1 ? `${isMobile ? 'text-6xl' : 'text-8xl'}` : 
-                  currentPosition === 2 ? `${isMobile ? 'text-4xl' : 'text-5xl'}` : 
-                  `${isMobile ? 'text-3xl' : 'text-5xl'}`
-                }`}>
+            <div className={`flex text-white ${currentPosition === 0 ? 'gap-10' :
+              currentPosition === 1 ? 'gap-5' :
+                currentPosition === 2 ? 'gap-3' : 'gap-2'
+              } ${isMobile ? 'scale-75' : ''}`}>
+              <div className={`relative flex justify-center items-center text-transition ${currentPosition === 0 ? `${isMobile ? 'text-5xl' : 'text-7xl'}` :
+                currentPosition === 1 ? `${isMobile ? 'text-4xl' : 'text-6xl'}` :
+                  currentPosition === 2 ? `${isMobile ? 'text-2xl' : 'text-3xl'}` :
+                    `${isMobile ? 'text-xl' : 'text-3xl'}`
+                } font-bold`}>
+                <div className={`absolute text-[#ffffff22] text-transition ${currentPosition === 0 ? `${isMobile ? 'text-7xl' : 'text-9xl'}` :
+                  currentPosition === 1 ? `${isMobile ? 'text-6xl' : 'text-8xl'}` :
+                    currentPosition === 2 ? `${isMobile ? 'text-4xl' : 'text-5xl'}` :
+                      `${isMobile ? 'text-3xl' : 'text-5xl'}`
+                  }`}>
                   {item.letter}
                 </div>
                 {item.count}
               </div>
-              <div className="text-start flex flex-col">
-                <div className={`${
-                  currentPosition === 0 ? `${isMobile ? 'text-3xl' : 'text-5xl'}` : 
-                  currentPosition === 1 ? `${isMobile ? 'text-lg' : 'text-xl'}` : 
-                  currentPosition === 2 ? `${isMobile ? 'text-sm' : 'text-md'}` : 
-                  `${isMobile ? 'text-xs' : 'text-sm'}`
-                } font-semibold`}>
+              <div className="text-start flex flex-col text-transition">
+                <div className={`text-transition ${currentPosition === 0 ? `${isMobile ? 'text-3xl' : 'text-5xl'}` :
+                    currentPosition === 1 ? `${isMobile ? 'text-lg' : 'text-xl'}` :
+                      currentPosition === 2 ? `${isMobile ? 'text-sm' : 'text-md'}` :
+                        `${isMobile ? 'text-xs' : 'text-sm'}`
+                  } font-semibold`}>
                   {item.header}
                 </div>
-                <div className={`${
-                  currentPosition === 0 ? `${isMobile ? 'text-xl' : 'text-2xl'}` : 
-                  currentPosition === 1 ? `${isMobile ? 'text-sm' : 'text-md'}` : 
-                  currentPosition === 2 ? `${isMobile ? 'text-[10px]' : 'text-xs'}` : 
-                  `${isMobile ? 'text-[8px]' : 'text-[8px]'}`
-                }`}>
+                <div className={`text-transition ${currentPosition === 0 ? `${isMobile ? 'text-xl' : 'text-2xl'}` :
+                    currentPosition === 1 ? `${isMobile ? 'text-sm' : 'text-md'}` :
+                      currentPosition === 2 ? `${isMobile ? 'text-[10px]' : 'text-xs'}` :
+                        `${isMobile ? 'text-[8px]' : 'text-[8px]'}`
+                  }`}>
                   {item.text}
                 </div>
               </div>
