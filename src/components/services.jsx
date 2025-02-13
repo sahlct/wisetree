@@ -128,7 +128,7 @@ export default function Services() {
   }, []);
 
   return (
-    <div>
+    <div style={{ overflow: 'hidden' }}> {/* Add overflow hidden here */}
       <div
         style={{
           background: `url(${dotGrid})`,
